@@ -9,9 +9,9 @@ const Home = () => {
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <h1 className="text-2xl font-bold text-blue-600">MyApp</h1>
           <nav className="space-x-4">
-            <Link to="/home" className="text-gray-700 hover:text-blue-600 font-medium">Home</Link>
-            <Link to="/login" className="text-gray-700 hover:text-blue-600 font-medium">Login</Link>
-            <Link to="/register" className="text-gray-700 hover:text-blue-600 font-medium">Sign Up</Link>
+            <Link to="/" className="text-gray-700 hover:text-blue-600 font-medium">About</Link>
+            <Link to="/" className="text-gray-700 hover:text-blue-600 font-medium">Contact</Link>
+            <Link to="/register" className="text-gray-700 hover:text-blue-600 font-medium">Logout</Link>
           </nav>
         </div>
       </header>
@@ -23,16 +23,9 @@ const Home = () => {
         </h2>
         <p className="text-lg text-gray-600 max-w-xl mb-8">
           Build fast, beautiful web applications using the power of the MERN Stack. 
-          Login to explore more or sign up to get started!
+          I am here to help you for your website development! <br />
+          Any problem regarding website development whether it's part of frontend, backend or database i will help you!
         </p>
-        <div className="space-x-4">
-          <Link to="/register" className="bg-blue-600 text-white px-6 py-2 rounded-xl hover:bg-blue-700 transition">
-            Get Started
-          </Link>
-          <Link to="/login" className="border border-blue-600 text-blue-600 px-6 py-2 rounded-xl hover:bg-blue-100 transition">
-            Login
-          </Link>
-        </div>
       </main>
 
       {/* Footer */}

@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import { StudentModel } from "./models/Student.js";
+import bcrypt from "bcrypt";
 
 const app = express();
 app.use(express.json())
@@ -25,11 +26,20 @@ app.post("/login", (req,res)=>{
     })
 })
 
-app.post("/register", (req,res)=>{
-    StudentModel.create(req.body)
-    .then(student => res.json(student))
-    .catch(err => res.json(err))
-})
+app.post("/register", async (req, res) => {
+    const { name, email, password } = req.body;
+
+    try {
+        // Hash the password
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        // Save the user with the hashed password
+        const newUser = await StudentModel.create({ name, email, password: hashedPassword });
+        res.json({ message: "User registered successfully", user: newUser });
+    } catch (err) {
+        res.status(500).json({ error: "Error registering user", details: err });
+    }
+});
 
 app.listen(3001, ()=>{
     console.log("Server is running");
