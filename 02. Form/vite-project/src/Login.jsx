@@ -5,16 +5,19 @@ import { useNavigate } from "react-router-dom";
 
 const Login = () => {
 
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.post('http://localhost:3001/login', {email, password})
         .then(result => {
-            if(result.data==="Success"){
+            if(result.data.message==="Login Successful"){
+                console.log("User logged in successfully");
                 navigate("/home")
+            }else{
+              console.log(result.data.message || "Unexpected response");
             }
         })
         .catch(error => console.log(error))
